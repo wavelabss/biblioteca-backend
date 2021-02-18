@@ -5,6 +5,11 @@
   "repository": "git@github.com:wavelabss/biblioteca-backend.git",
   "author": "Bruno Laviso <bruno.laviso@hotmail.com>",
   "license": "MIT",
+  "scripts": {
+    "build": "tsc",
+    "start": "yarn build && node dist/index.js",
+    "start:dev": "ts-node-dev --transpile-only 'src/index.ts'"
+  },
   "devDependencies": {
     "@types/node": "^14.14.28",
     "@typescript-eslint/eslint-plugin": "^4.15.1",
@@ -17,6 +22,7 @@
     "git-commit-msg-linter": "^3.0.0",
     "husky": "^5.0.9",
     "lint-staged": "^10.5.4",
-    "typescript": "^4.1.5"
+    "typescript": "^4.1.5",
+    "ts-node-dev": "^1.1.1"
   }
 }

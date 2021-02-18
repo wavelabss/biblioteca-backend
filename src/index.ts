@@ -1,5 +1,16 @@
-import './module-alias'
-import { test } from '@src/test/test'
+import { SetupServer } from './server'
 
-console.log('running...')
-test()
+enum ExitStatus {
+  Failure = 1,
+  Success = 0
+}
+
+try {
+  const server = new SetupServer()
+
+  server.init()
+  server.start()
+} catch (error) {
+  console.error(`App exited with error: ${error}`)
+  process.exit(ExitStatus.Failure)
+}

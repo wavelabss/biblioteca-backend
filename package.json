@@ -1,0 +1,8 @@
+{
+  "name": "biblioteca-backend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:wavelabss/biblioteca-backend.git",
+  "author": "Bruno Laviso <bruno.laviso@hotmail.com>",
+  "license": "MIT"
+}

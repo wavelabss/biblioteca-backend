@@ -1,0 +1,8 @@
+{
+  "name": "biblioteca-backend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/wavelabss/biblioteca-backend.git",
+  "author": "Gabriel Jose de Oliveira <gaoliveira211999@gmail.com>",
+  "license": "MIT"
+}

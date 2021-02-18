@@ -1,4 +1,5 @@
 import { SetupServer } from './server'
+import logger from './logger'
 
 enum ExitStatus {
   Failure = 1,
@@ -15,11 +16,11 @@ try {
 
   exitSignals.forEach(signal => {
     process.on(signal, () => {
-      console.log('App exited with success')
+      logger.info('App exited with success')
       process.exit(ExitStatus.Success)
     })
   })
 } catch (error) {
-  console.error(`App exited with error: ${error}`)
+  logger.error(`App exited with error: ${error}`)
   process.exit(ExitStatus.Failure)
 }

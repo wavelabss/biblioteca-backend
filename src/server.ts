@@ -1,5 +1,6 @@
 import express, { Application } from 'express'
 import './module-alias'
+import logger from './logger'
 
 export class SetupServer {
   private app: Application
@@ -14,7 +15,7 @@ export class SetupServer {
   }
 
   public start(): void {
-    this.app.listen(this.port, () => console.log(`Server listening on port ${this.port}`))
+    this.app.listen(this.port, () => logger.info(`Server listening on port ${this.port}`))
   }
 
   private setupExpress(): void {

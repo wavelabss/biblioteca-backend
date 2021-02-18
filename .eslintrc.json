@@ -4,7 +4,10 @@
     "node": true
   },
   "extends": [
-    "standard"
+    "standard",
+    "eslint:recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended"
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
@@ -19,6 +22,7 @@
     "triple-slash-reference": "off",
     "strict-boolean-expressions": "off",
     "consistent-type-definitions": "off",
-    "return-await": "off"
+    "return-await": "off",
+    "no-useless-constructor": "off"
   }
 }

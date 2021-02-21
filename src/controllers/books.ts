@@ -28,6 +28,16 @@ export class BooksController {
   }
 
   public async destroy(request: Request, response: Response): Promise<Response> {
-    return response.status(204).json()
+    try {
+      const id = request.params.id
+      await Book.deleteOne({ _id: id })
+
+      return response.status(204).json()
+    } catch (error) {
+      return response.status(500).json({
+        code: 500,
+        message: 'Something went wrong'
+      })
+    }
   }
 }

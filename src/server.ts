@@ -5,9 +5,7 @@ import routes from './routes'
 
 export class SetupServer {
   private app: Application
-  constructor (
-    private port: number = 3333
-  ) {
+  constructor (private port: number) {
     this.app = express()
   }
 

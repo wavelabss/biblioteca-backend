@@ -7,5 +7,6 @@ const router = Router()
 const booksController = new BooksController()
 
 router.get('/books', booksController.index)
+router.post('/books', booksController.store)
 
 export default router

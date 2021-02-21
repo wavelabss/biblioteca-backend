@@ -26,4 +26,17 @@ export class BooksController {
       })
     }
   }
+
+  public async destroy(request: Request, response: Response): Promise<Response> {
+    try {
+      const body: Omit<IBook, '_id'> = request.body
+      const book = await Book.create(body)
+      return response.status(201).json(book)
+    } catch (error) {
+      return response.status(500).json({
+        code: 500,
+        message: 'Something went wrong'
+      })
+    }
+  }
 }

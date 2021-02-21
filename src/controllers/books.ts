@@ -27,6 +27,17 @@ export class BooksController {
     }
   }
 
+  public async update(request: Request, response: Response): Promise<Response> {
+    try {
+      return response.status(200).json()
+    } catch (error) {
+      return response.status(500).json({
+        code: 500,
+        message: 'Something went wrong'
+      })
+    }
+  }
+
   public async destroy(request: Request, response: Response): Promise<Response> {
     try {
       const id = request.params.id

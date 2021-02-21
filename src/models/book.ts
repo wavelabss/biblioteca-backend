@@ -3,6 +3,7 @@ import mongoose, { Document, Model } from 'mongoose'
 export interface IBook {
   _id?: string
   title: string
+  publishing: string
   photo: string
   authors: string[]
 }

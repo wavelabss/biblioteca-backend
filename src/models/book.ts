@@ -1,13 +1,13 @@
 import mongoose, { Document, Model } from 'mongoose'
 
-export interface Book {
+export interface IBook {
   _id?: string
   title: string
   photo: string
   authors: string[]
 }
 
-interface UserModel extends Omit<Book, '_id'>, Document {
+interface BookModel extends Omit<IBook, '_id'>, Document {
 
 }
 
@@ -31,4 +31,4 @@ const schema = new mongoose.Schema(
   }
 )
 
-export const User: Model<UserModel> = mongoose.model('User', schema)
+export const Book: Model<BookModel> = mongoose.model('Book', schema)

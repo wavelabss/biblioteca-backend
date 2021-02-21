@@ -13,4 +13,8 @@ export class BooksController {
       })
     }
   }
+
+  public async store(request: Request, response: Response): Promise<Response> {
+    return response.json()
+  }
 }

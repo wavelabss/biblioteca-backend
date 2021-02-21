@@ -1,9 +1,11 @@
 import { Router } from 'express'
 
+import { BooksController } from '@src/controllers/books'
+
 const router = Router()
 
-router.get('/books', (request, response) => {
-  return response.json({ hello: 'Hello' })
-})
+const booksController = new BooksController()
+
+router.get('/books', booksController.index)
 
 export default router

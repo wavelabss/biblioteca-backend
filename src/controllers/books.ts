@@ -26,4 +26,8 @@ export class BooksController {
       })
     }
   }
+
+  public async destroy(request: Request, response: Response): Promise<Response> {
+    return response.status(204).json()
+  }
 }

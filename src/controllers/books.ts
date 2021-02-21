@@ -29,7 +29,11 @@ export class BooksController {
 
   public async update(request: Request, response: Response): Promise<Response> {
     try {
-      return response.status(204).json()
+      const id = request.params.id
+      const body: Partial<Omit<IBook, '_id'>> = request.body
+
+      const book = await Book.findByIdAndUpdate(id, body, { new: true })
+      return response.status(200).json(book)
     } catch (error) {
       return response.status(500).json({
         code: 500,

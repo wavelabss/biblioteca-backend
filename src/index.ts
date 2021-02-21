@@ -1,3 +1,4 @@
+import dotenv from 'dotenv'
 import { SetupServer } from './server'
 import logger from './logger'
 
@@ -7,7 +8,10 @@ enum ExitStatus {
 }
 
 try {
-  const server = new SetupServer(3333)
+  dotenv.config()
+
+  const PORT = Number(process.env.PORT ?? 3333)
+  const server = new SetupServer(PORT)
 
   server.init()
   server.start()

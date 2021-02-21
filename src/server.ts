@@ -1,6 +1,7 @@
 import express, { Application } from 'express'
 import './module-alias'
 import logger from './logger'
+import routes from './routes'
 
 export class SetupServer {
   private app: Application
@@ -20,5 +21,6 @@ export class SetupServer {
 
   private setupExpress(): void {
     this.app.use(express.json())
+    this.app.use(routes)
   }
 }

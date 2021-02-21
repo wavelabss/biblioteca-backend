@@ -1,5 +1,5 @@
 import { Request, Response } from 'express'
-import { Book } from '@src/models/book'
+import { Book, IBook } from '@src/models/book'
 
 export class BooksController {
   public async index(_: Request, response: Response): Promise<Response> {
@@ -15,6 +15,15 @@ export class BooksController {
   }
 
   public async store(request: Request, response: Response): Promise<Response> {
-    return response.json()
+    try {
+      const body: Omit<IBook, '_id'> = request.body
+      const book = await Book.create(body)
+      return response.status(201).json(book)
+    } catch (error) {
+      return response.status(500).json({
+        code: 500,
+        message: 'Something went wrong'
+      })
+    }
   }
 }

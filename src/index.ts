@@ -7,24 +7,32 @@ enum ExitStatus {
   Success = 0
 }
 
-try {
-  dotenv.config()
+(async () => {
+  try {
+    dotenv.config()
 
-  const PORT = Number(process.env.PORT ?? 3333)
-  const server = new SetupServer(PORT)
+    const PORT = Number(process.env.PORT ?? 3333)
+    const server = new SetupServer(PORT)
 
-  server.init()
-  server.start()
+    server.init()
+    server.start()
 
-  const exitSignals: NodeJS.Signals[] = ['SIGINT', 'SIGTERM', 'SIGQUIT']
+    const exitSignals: NodeJS.Signals[] = ['SIGINT', 'SIGTERM', 'SIGQUIT']
 
-  exitSignals.forEach(signal => {
-    process.on(signal, () => {
-      logger.info('App exited with success')
-      process.exit(ExitStatus.Success)
+    exitSignals.forEach(signal => {
+      process.on(signal, async () => {
+        try {
+          await server.close()
+          logger.info('App exited with success')
+          process.exit(ExitStatus.Success)
+        } catch (error) {
+          logger.info(`App exited with error ${error}`)
+          process.exit(ExitStatus.Failure)
+        }
+      })
     })
-  })
-} catch (error) {
-  logger.error(`App exited with error: ${error}`)
-  process.exit(ExitStatus.Failure)
-}
+  } catch (error) {
+    logger.error(`App exited with error: ${error}`)
+    process.exit(ExitStatus.Failure)
+  }
+})()
